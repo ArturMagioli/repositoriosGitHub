@@ -43,4 +43,10 @@ export class DOMManipulator {
         const listElement = document.getElementById('repositoriesList');
         listElement.appendChild(listItemElement);
     }
+
+    static alertIssue(name) {
+        const alertElement = document.getElementById('error');
+        alertElement.appendChild(document.createTextNode(`Error on requisition: could not find ${name} repository.`));
+        alertElement.setAttribute('class', 'alert alert-danger');
+    }
 }

@@ -12,13 +12,14 @@ btnElement.onclick = () => {
     const spanElement = document.getElementById('repositorieInput');
     get_github_repository('https://api.github.com/repos/' + spanElement.value)
         .then((promise) => {
+            //TODO: limpar mensagens antigas, acabamentos e otimização de código!
             //Construir o objeto do repositório:
-            repository = new Repository(promise.name, promise.description, promise.owner.avatar_url, promise.html_url);
-
-            //montar um elemento de lista com o objeto:
-            DOMManipulator.insertOnList(DOMManipulator.toListItemElement(repository));
-        })
-        .catch((error) => {
-            console.log(error);
-        });//O retorno de uma função assíncrona também é uma promise!
+            if (promise) {
+                repository = new Repository(promise.name, promise.description, promise.owner.avatar_url, promise.html_url);
+                //montar um elemento de lista com o objeto:
+                DOMManipulator.insertOnList(DOMManipulator.toListItemElement(repository));
+            }else {
+                DOMManipulator.alertIssue(spanElement.value);
+            }
+        });
 }

@@ -18,6 +18,6 @@ export async function get_github_repository(URL) {
     try {
         return await api_get_request(URL);
     }catch(error) {
-        return error;
+        return false;
     }
 }
