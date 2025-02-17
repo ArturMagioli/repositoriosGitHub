@@ -1,4 +1,4 @@
-const api_request = (URL) => {return new Promise( (resolve, reject) => {
+const api_get_request = (URL) => {return new Promise( (resolve, reject) => {
     const ajax = new XMLHttpRequest();
     ajax.open('GET', URL);
     ajax.send(null);
@@ -8,22 +8,16 @@ const api_request = (URL) => {return new Promise( (resolve, reject) => {
             if (ajax.status === 200) {
                 resolve(JSON.parse(ajax.responseText));
             }else{
-                reject("Error on requisition: could not find this repository. Uou");
+                reject("Error on requisition: could not find this repository.");
             }
         }
     }
 })};
 
 export async function get_github_repository(URL) {
-    api_request(URL)
-        .then( (response) => {
-            //Dados necessários:
-            // console.log(response.name);
-            // console.log(response.description);
-            // console.log(response.owner.avatar_url);
-            // console.log(response.html_url);
-        })
-        .catch( (error) => {
-            console.log(error);
-        })
+    try {
+        return await api_get_request(URL);
+    }catch(error) {
+        return error;
+    }
 }
