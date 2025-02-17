@@ -1,6 +1,7 @@
 import { get_github_repository } from './requisitions';
 import { Repository } from './entities';
 import { DOMManipulator } from './dom_manipulator';
+import '../style/list_item.css';
 let repository = '';
 
 //Obtendo os elementos da nossa página:
@@ -16,9 +17,6 @@ btnElement.onclick = () => {
 
             //montar um elemento de lista com o objeto:
             DOMManipulator.insertOnList(DOMManipulator.toListItemElement(repository));
-
-
-
         })
         .catch((error) => {
             console.log(error);

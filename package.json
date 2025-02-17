@@ -19,5 +19,9 @@
   "scripts": {
     "dev": "webpack-dev-server --mode=development -w",
     "prod": "webpack --mode=production"
+  },
+  "dependencies": {
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0"
   }
 }
