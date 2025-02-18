@@ -13,16 +13,26 @@ btnElement.onclick = () => {
         .then((promise) => {
             //Construindo o objeto do repositório
             if (promise) {
-                const newRepository = new Repository(promise.name, promise.description, promise.owner.avatar_url, promise.html_url);
+                let newRepository = new Repository(promise.name, promise.description, promise.owner.avatar_url, promise.html_url);
+                if (!existsObjectOnArray(repository, newRepository)) {
                     repository.push(newRepository);
                     console.log(repository);
                     //montar um elemento de lista com o objeto:
                     DOMManipulator.insertOnList(DOMManipulator.toListItemElement(newRepository));
-                // }else{
-                //     DOMManipulator.alertIssue(`This repository already exists on your list`);
-                // }
+                }else{
+                    DOMManipulator.alertIssue(`This repository already exists on your list`);
+                }
             }else {
                 DOMManipulator.alertIssue(`${spanElement.value} not found`);
             }
         });
+}
+
+function existsObjectOnArray(arrayObject, object) {
+    for(let item of arrayObject) {
+       if (item.name === object.name) {
+           return true;
+       }
+    }
+    return false;
 }
