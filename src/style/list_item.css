@@ -1,0 +1,30 @@
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+li {
+    clear: both;
+    margin-top: 20px;
+}
+
+img {
+    width: 90px;
+    float: left;
+    padding: 7px;
+    margin: auto;
+}
+
+strong {
+    font-size: 20px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+a {
+    text-decoration: none;
+}
