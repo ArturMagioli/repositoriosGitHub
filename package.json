@@ -2,7 +2,7 @@
   "name": "repositoriosGitHub",
   "version": "1.0.0",
   "description": "Configurações para a estruturação do sistema e servidor webpack",
-  "main": "main.js",
+  "main": "server.js",
   "repository": "https://github.com/ArturMagioli/repositoriosGitHub.git",
   "author": "Artur de Paula",
   "license": "MIT",
@@ -12,6 +12,8 @@
     "@babel/core": "^7.26.9",
     "@babel/preset-env": "^7.26.9",
     "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
@@ -19,9 +21,5 @@
   "scripts": {
     "dev": "webpack-dev-server --mode=development -w",
     "prod": "webpack --mode=production"
-  },
-  "dependencies": {
-    "css-loader": "^7.1.2",
-    "style-loader": "^4.0.0"
   }
 }

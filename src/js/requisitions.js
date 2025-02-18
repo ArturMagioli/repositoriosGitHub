@@ -1,10 +1,15 @@
+import { DOMManipulator } from './dom_manipulator';
 const api_get_request = (URL) => {return new Promise( (resolve, reject) => {
     const ajax = new XMLHttpRequest();
     ajax.open('GET', URL);
     ajax.send(null);
 
     ajax.onreadystatechange = () => {
+        if(ajax.readyState === 3) {
+            DOMManipulator.loadingAlert();
+        }
         if(ajax.readyState === 4) {
+            DOMManipulator.cleanAlert(document.getElementById('alert'));
             if (ajax.status === 200) {
                 resolve(JSON.parse(ajax.responseText));
             }else{

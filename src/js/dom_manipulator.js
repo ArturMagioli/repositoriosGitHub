@@ -1,11 +1,3 @@
-//Responsável por transformar objetos em elementos HTML
-
-// function createFormatedNode(element, atribute) {
-//     const newElement = document.createElement(element);
-//     element.setAttribute(atribute);
-//     return newElement;
-// }
-
 export class DOMManipulator {
     static toListItemElement(repository_object) {
         //Criando o nó da lista
@@ -44,9 +36,24 @@ export class DOMManipulator {
         listElement.appendChild(listItemElement);
     }
 
-    static alertIssue(name) {
-        const alertElement = document.getElementById('error');
-        alertElement.appendChild(document.createTextNode(`Error on requisition: could not find ${name} repository.`));
+    static alertIssue(problem) {
+        const alertElement = document.getElementById('alert');
+        this.cleanAlert(alertElement);
+        alertElement.appendChild(document.createTextNode(`Error on requisition: ${problem}`));
         alertElement.setAttribute('class', 'alert alert-danger');
+    }
+
+    static loadingAlert() {
+        const alertElement = document.getElementById('alert');
+        this.cleanAlert(alertElement);
+        alertElement.appendChild(document.createTextNode('Loading...'));
+        alertElement.setAttribute('class', 'alert alert-warning');
+    }
+
+    static cleanAlert(alert){
+        if (alert.innerHTML){
+            alert.innerHTML = '';
+            alert.setAttribute('class', 'd-none');
+        }
     }
 }

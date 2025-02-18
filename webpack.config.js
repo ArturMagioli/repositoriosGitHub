@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './src/js/main.js',
+    entry: './src/js/server.js',
     output: {
         path: __dirname + '/public',
         filename: 'bundle.js',
